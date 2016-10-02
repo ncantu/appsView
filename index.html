@@ -1,0 +1,84 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="description" content="Scrap the car">
+<meta name="author" content="Nicolas Cantu <nicolas.cantu@instriit.com">
+<meta name="viewport"
+	content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width">
+<meta http-equiv="Access-Control-Allow-Origin" content="*">
+<title>ScrapMyCar</title>
+<link href="css/default.css" media="all" rel="stylesheet"
+	type="text/css">
+<link href="css/notification.css" media="all" rel="stylesheet"
+	type="text/css">
+<script type="text/javascript" src="js/notification.js"></script>
+</head>
+<body>
+	<div id="toastTarget"></div>
+	<div id="contentMain">
+		<h2 class="line hidden">Try it!</h2>
+		<div class="" style="width: 300px;float:left">
+			<div class="fileUpload line">
+				<div class="input-file-container">
+					<input type="file" class="input-file"
+						accept="image/*;capture=camera" id="imgLoad" name="imgLoad">
+					<label for="imgLoad" class="input-file-trigger" tabindex="0">File...</label>
+				</div>
+                    <select id="videoSource" class="input-file-trigger"></select> 
+                    <a href="#" id="read" class="input-file-trigger">Read it!</a> 
+                    <input type="text" class="input-file-trigger" id="frenchLicencePlate" name="frenchLicencePlate" value="" placeholder="Or type it">
+                    <a href="#" id="info" class="input-file-trigger">Get car infos!</a>
+                    <a href="app-debug.apk" target="_blank">
+                        <img src="img/android-app-icon.png" style="width: 200px; margin-left: 6px;">
+                    </a>
+			</div>
+		</div>
+        <div class="" style="float:left; margin-top:6px">
+            <img src="img/sample.jpg" id="preview" name="preview" alt="Preview"
+                class="preview">
+        </div>
+		<div id="cameraTools">
+			<div id="videoContainer" class="hidden">
+				<video id="video" mute width="640" height="480" autoplay
+					src="blob:https://appsview.instriit.com/17103875-c3d7-4c23-b8ad-6d71a30eb7ab"></video>
+				<div id="videoMask"></div>
+                    <a href="#" id="scrap" class="input-file-trigger">Photo!</a>
+			</div>
+		</div>
+		<h4 class="" style="clear:both;">Author: Nicolas Cantu</h4>
+		<p class="file-return hidden"></p>
+		<canvas id="canvas" class="hidden"></canvas>
+		<script type="text/javascript" src="js/default.js"></script>
+
+		<script type="text/javascript">
+            // ajout de la classe JS à HTML  
+            document.querySelector("html").classList.add('js');
+
+            // initialisation des variables  
+            var fileInput = document.querySelector(".input-file"), button = document
+                    .querySelector(".input-file-trigger"), the_return = document
+                    .querySelector(".file-return");
+
+            // action lorsque la "barre d'espace" ou "Entrée" est pressée  
+            button.addEventListener("keydown", function(event) {
+                if (event.keyCode == 13 || event.keyCode == 32) {
+                    fileInput.focus();
+                }
+            });
+
+            // action lorsque le label est cliqué  
+            button.addEventListener("click", function(event) {
+                fileInput.focus();
+                return false;
+            });
+
+            // affiche un retour visuel dès que input:file change  
+            fileInput.addEventListener("change", function(event) {
+                the_return.innerHTML = this.value;
+            });
+        </script>
+	</div>
+</body>
+</html>
